@@ -12,15 +12,7 @@ const port = process.env.PORT;
 
 // Do we need CORS?
 const cors = require("cors");
-app.use(
-  cors({
-    origin: [
-      "http://localhost:8081",
-      "https://brickdup.ix90n.icekube.ics.cloud",
-      "https://brickdup-test.ix90n.icekube.ics.cloud",
-    ],
-  })
-);
+app.use(cors());
 
 const sharedVariable = "test";
 
