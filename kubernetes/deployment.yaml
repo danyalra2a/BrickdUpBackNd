@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: brickdupbacknd
+  name: brickdupbacknd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: brickdupbacknd
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: brickdupbacknd
+    spec:
+      imagePullSecrets:
+      - name: ghcr-creds2
+      containers:
+      - image: ghcr.io/thg-accelerator/brickdupbacknd:20240319122407
+        ports:
+        - containerPort: 3000
+        name: brickdupbacknd
+        resources: {}
+status: {}

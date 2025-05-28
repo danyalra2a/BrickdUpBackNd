@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Service
+apiVersion: v1
+metadata:
+  name: brickdupbacknd-service
+spec:
+  selector:
+    app: brickdupbacknd
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000

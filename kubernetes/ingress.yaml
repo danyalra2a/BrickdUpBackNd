@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-thgice
+    cert-manager.io/issue-temporary-certificate: "true"
+    ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/tls-acme: "true"
+  name: brickdupbacknd-ingress
+  namespace: marcus-allen
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: brickdupbacknd.ix90n.icekube.ics.cloud
+    http:
+      paths:
+      - backend:
+          service:
+            name: brickdupbacknd-service
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - brickdupbacknd.ix90n.icekube.ics.cloud
+    secretName: brickdupbacknd-tls
